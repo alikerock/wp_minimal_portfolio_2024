@@ -21,7 +21,22 @@
        </nav>      
        <hr>
        <ul class="portfolio_links">
-           <li><a href="<?php bloginfo('url') ?>/category/minimal-portfolio/" class="secondary-btn active">All</a></li>
+            <?php
+                $currentURI = $_SERVER['REQUEST_URI'];
+                $urlArr = explode('/',$currentURI);
+                $urlArrLast = $urlArr[count($urlArr)-2];
+                $catNameOrg = str_replace('minimal-portfolio','',$urlArrLast);
+                $catName = str_replace('-','',$catNameOrg);
+             
+                // echo $catName;
+
+            ?>
+
+           <li>
+            <a 
+                href="<?php bloginfo('url') ?>/category/minimal-portfolio/" 
+                class="secondary-btn <?php echo $catName === '' ?  'active':''; ?>"
+                >All</a></li>
 
            <!-- <li><a href="" class="secondary-btn">Print</a></li>
            <li><a href="" class="secondary-btn">Web</a></li>
@@ -36,8 +51,9 @@
             ) );
 
             foreach( $categories as $category ) {
+                $category->name === $catName ? $activeClass="active":$activeClass='';
                 $category_link = sprintf( 
-                    '<a href="%1$s" alt="%2$s" class="secondary-btn">%3$s</a>',
+                    '<a href="%1$s" alt="%2$s" class="secondary-btn '.$activeClass.'">%3$s</a>',
                     esc_url( get_category_link( $category->term_id ) ),
                     esc_attr( sprintf( __( 'View all posts in %s', 'ezweb' ), $category->name ) ),
                     esc_html( $category->name )
