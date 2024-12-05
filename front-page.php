@@ -50,12 +50,14 @@
 
   <?php 
     endwhile;
+    // Reset Query
+    wp_reset_query();    
   ?>
 
       
   </div>
   <p class="porfolio_readmore">
-      <a href="" class="primary-btn">See my full portfolio</a>        
+      <a href="<?php bloginfo('url') ?>/mininal/portfolio/" class="primary-btn">See my full portfolio</a>        
   </p>
 </div>
 
