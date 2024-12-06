@@ -65,8 +65,16 @@
                       -</small>
                   </blockquote>
                   <p class="nav">
-                      <a href="" class="secondary-btn">&larr; Previous Project</a>
-                      <a href="" class="secondary-btn">Next Project &rarr;</a>
+                      <!-- 
+                        <a href="" class="secondary-btn">&larr; Previous Project</a>
+                      <a href="" class="secondary-btn">Next Project &rarr;</a> 
+                      -->
+                      <span class="secondary-btn">
+                        <?php previous_post_link( '%link', __( '&larr; Previous Project', 'ezweb' ), true ); ?> 
+                      </span>               
+                      <span class="secondary-btn">
+                        <?php next_post_link( '%link', __( 'Next Project &rarr;', 'ezweb' ), true ); ?>
+                      </span> 
                   </p>
               </div>
           </div>
